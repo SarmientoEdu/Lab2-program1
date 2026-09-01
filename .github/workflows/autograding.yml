@@ -1,0 +1,22 @@
+name: Autograding Java Lab Express (20 min)
+
+on: [push]
+
+jobs:
+  evaluacion-expres:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Java JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Compilar y Ejecutar
+        run: |
+          javac src/Estudiante.java src/Main.java
+          java -cp src Main
